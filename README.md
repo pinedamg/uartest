@@ -1,4 +1,4 @@
-uartest
+Uartest
 =======
 
 UAR Test Project
