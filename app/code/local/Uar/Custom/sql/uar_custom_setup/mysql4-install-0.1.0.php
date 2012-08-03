@@ -1,36 +1,29 @@
 <?php
-/**
- *  extension for Magento
- *
- * Long description of this file (if any...)
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade
- * the Uar Custom module to newer versions in the future.
- * If you wish to customize the Uar Custom module for your needs
- * please refer to http://www.magentocommerce.com for more information.
- *
- * @category   Uar
- * @package    Uar_Custom
- * @copyright  Copyright (C) 2012 http://www.mpineda.com.ar/
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
 
-/**
- * @var $this Mage_Core_Model_Resource_Setup
- */
-
+/* @var $installer Uar_Custom_Model_Entity_Setup */
 $installer = $this;
+
+/* @var $setup Mage_Eav_Model_Entity_Setup */
+$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
+
 $installer->startSetup();
 
+$setup->addAttribute('catalog_product', 'testing_attribute', array(
+    'group'         => 'General',
+    'input'         => 'select',
+    'type'          => 'int',
+    'label'         => 'Special Shipping',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined' => 1,
+    'searchable' => 1,
+    'filterable' => 0,
+    'comparable'    => 1,
+    'visible_on_front' => 1,
+    'visible_in_advanced_search'  => 0,
+    'is_html_allowed_on_front' => 0,
+    'global'        => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
+));
 
 
 $installer->endSetup();
