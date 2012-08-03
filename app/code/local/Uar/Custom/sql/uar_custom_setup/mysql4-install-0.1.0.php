@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?php
 /**
  *  extension for Magento
+ *
+ * Long description of this file (if any...)
  *
  * NOTICE OF LICENSE
  *
@@ -22,22 +23,14 @@
  * @copyright  Copyright (C) 2012 http://www.mpineda.com.ar/
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<config>
-    <modules>
-        <Uar_Custom>
-            <version>0.1.0</version>
-        </Uar_Custom>
-    </modules>
-    <global>
-        <resources>
-            <uar_custom_setup>
-                <setup>
-                    <module>Uar_Custom</module>
-                    <connection>core_setup</connection>
-                </setup>
-            </uar_custom_setup>
-        </resources>
-    </global>
-</config>
 
+/**
+ * @var $this Mage_Core_Model_Resource_Setup
+ */
+
+$installer = $this;
+$installer->startSetup();
+
+
+
+$installer->endSetup();
