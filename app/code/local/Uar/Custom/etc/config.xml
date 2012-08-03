@@ -1,43 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-/**
- *  extension for Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade
- * the Uar Custom module to newer versions in the future.
- * If you wish to customize the Uar Custom module for your needs
- * please refer to http://www.magentocommerce.com for more information.
- *
- * @category   Uar
- * @package    Uar_Custom
- * @copyright  Copyright (C) 2012 http://www.mpineda.com.ar/
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
--->
+<?xml version="1.0"?>
 <config>
     <modules>
         <Uar_Custom>
             <version>0.1.0</version>
         </Uar_Custom>
     </modules>
+    <admin>
+    </admin>
     <global>
+        <models>
+            <custom>
+                <class>Uar_Custom_Model</class>
+                <resourceModel>custom_entity</resourceModel>
+            </custom>
+            <custom_entity>
+                <class>Uar_Custom_Model_Entity</class>
+                <entities>
+                </entities>
+            </custom_entity>
+        </models>
+        <blocks>
+            <custom>
+                <class>Uar_Custom_Block</class>
+            </custom>
+        </blocks>
+        <helpers>
+            <custom>
+                <class>Uar_Custom_Helper</class>
+            </custom>
+        </helpers>
         <resources>
             <uar_custom_setup>
                 <setup>
                     <module>Uar_Custom</module>
+                    <class>Uar_Custom_Model_Entity_Setup</class>
                     <connection>core_setup</connection>
                 </setup>
             </uar_custom_setup>
         </resources>
     </global>
+    <adminhtml>
+    </adminhtml>
+    <frontend>
+        <events/>
+        <routers/>
+        <translate>
+            <modules>
+                <Uar_Custom>
+                    <files>
+                        <default>Uar_Custom.csv</default>
+                    </files>
+                </Uar_Custom>
+            </modules>
+        </translate>
+        <layout/>
+    </frontend>
+    <default>
+        <custom>
+        </custom>
+    </default>
+    <phpunit>
+        <suite>
+            <modules>
+                <Uar_Custom/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>
 
