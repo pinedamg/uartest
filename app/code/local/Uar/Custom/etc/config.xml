@@ -13,12 +13,18 @@
                 <class>Uar_Custom_Model</class>
                 <resourceModel>custom_entity</resourceModel>
             </custom>
-            <custom_entity>
-                <class>Uar_Custom_Model_Entity</class>
-                <entities>
-                </entities>
-            </custom_entity>
         </models>
+        <events>
+            <checkout_cart_save_after>
+                <observers>
+                    <uar_custom_observer>
+                        <type>singleton</type>
+                        <class>Uar_Custom_Model_Observer</class>
+                        <method>isSpecialShipping</method>
+                    </uar_custom_observer>
+                </observers>
+            </checkout_cart_save_after>      
+        </events>
         <blocks>
             <custom>
                 <class>Uar_Custom_Block</class>
@@ -53,7 +59,13 @@
                 </Uar_Custom>
             </modules>
         </translate>
-        <layout/>
+<!--        <layout>
+            <updates>
+                <custom>
+                    <file>custom.xml</file>
+                </custom>
+            </updates>
+        </layout>-->
     </frontend>
     <default>
         <custom>
