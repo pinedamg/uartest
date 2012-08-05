@@ -10,14 +10,18 @@
             <block type="core/template" name="uar_custom_block" template="custom/custom.phtml"/>
         </reference>
     </checkout_cart_index>
+
     <custom_custom_index>
+        <label>Special Shipping Products List</label>
         <reference name="root">
             <action method="setTemplate"><template>page/popup.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
+            <action method="addJs"><script>varien/product.js</script></action>
+        </reference>
         <reference name="content">
-            <block type="core/text" name="uar_custom_block">
-                <action method="setText"><text>TEXTO </text></action>
-            </block>
+            <block type="custom/list" name="custom.list" template="custom/list.phtml"/>
         </reference>
     </custom_custom_index>
 </layout>

@@ -1,12 +1,11 @@
 <script type="text/javascript">
-
-function showCompare(url) {
-    winCompare = new Window({
+    var special_selected = false;
+    var special_shipping_popup = new Window('special_shipping_popup',{
         className:'magento',
-        title:'Compare Products',
-        url:url,
-        width:820,
-        height:600,
+        title:'Special Shipping Products List',
+        url: '<?php echo Mage::getUrl('custom/custom'); ?>',
+        width:800,
+        height:450,
         minimizable:false,
         maximizable:false,
         showEffectOptions:{
@@ -14,12 +13,14 @@ function showCompare(url) {
         },
         hideEffectOptions:{
             duration:0.4
+//        },
+//        closeCallback: function() {
+//            if(!special_selected){
+//                this.close();
+//                return;
+//            }
+//            parent.window.location.reload();
         }
     });
-    winCompare.setZIndex(100);
-    winCompare.showCenter(true);
-}
-
-showCompare('<?php echo Mage::getUrl('custom/custom'); ?>');
-
+    special_shipping_popup.setZIndex(100);
 </script>
