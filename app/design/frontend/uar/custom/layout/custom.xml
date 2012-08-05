@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <checkout_cart_index translate="label">
+        <reference name="head">
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/magento.css</name></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="uar_custom_block" template="custom/custom.phtml"/>
+        </reference>
+    </checkout_cart_index>
+    <custom_custom_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/popup.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/text" name="uar_custom_block">
+                <action method="setText"><text>TEXTO </text></action>
+            </block>
+        </reference>
+    </custom_custom_index>
+</layout>
