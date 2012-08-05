@@ -28,7 +28,7 @@ $_example_products = array(
         'description' => 'Description Special Shipping',
     ),
     'simple' => array(
-        'name' => 'Simple Product',
+        'name' => 'Simple Product ',
         'sku' => 'skusimple',
         'description' => 'Description Simple Product',
     ),
