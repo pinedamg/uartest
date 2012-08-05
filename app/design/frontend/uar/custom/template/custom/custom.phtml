@@ -1,0 +1,25 @@
+<script type="text/javascript">
+
+function showCompare(url) {
+    winCompare = new Window({
+        className:'magento',
+        title:'Compare Products',
+        url:url,
+        width:820,
+        height:600,
+        minimizable:false,
+        maximizable:false,
+        showEffectOptions:{
+            duration:0.4
+        },
+        hideEffectOptions:{
+            duration:0.4
+        }
+    });
+    winCompare.setZIndex(100);
+    winCompare.showCenter(true);
+}
+
+showCompare('<?php echo Mage::getUrl('custom/custom'); ?>');
+
+</script>
