@@ -2,12 +2,6 @@
 
 class Uar_Custom_Model_Observer
 {
-    /**
-     * @name isSpecialShipping
-     * @access public
-     * @param type $_observer
-     * @return mixed
-     */
     public function isSpecialShipping($_observer)
     {
         $_event         = $_observer->getEvent();
@@ -42,12 +36,6 @@ class Uar_Custom_Model_Observer
         );
     }
 
-    /**
-     * @name isSpecialShipping
-     * @access public
-     * @param type $_observer
-     * @return mixed
-     */
     public function removeSpecialShipping($_observer)
     {
         $_event         = $_observer->getEvent();
@@ -70,6 +58,31 @@ class Uar_Custom_Model_Observer
                 if ( $_product->isVirtual() ) {
                     $_cart->removeItem($_item_id);
                     $_cart->getCheckoutSession()->unsMessages();
+                }
+            }
+        }
+    }
+    
+    public function verifyOnlyOne($_observer)
+    {
+        $_event         = $_observer->getEvent();
+        $_quote_item    = $_observer->getQuoteItem();
+        $_product_item  = $_observer->getProduct();
+        $_cart          = Mage::getSingleton('checkout/cart');
+        $_helper        =  Mage::helper('custom');
+        /*@var $_helper Uar_Custom_Helper_Data*/
+        
+        $_status = $_helper->verifyRelation($_cart);
+
+        if ($_status == Uar_Custom_Helper_Data::REL_SIMPLES_VIRTUAL
+                && $_product_item->isVirtual()) {
+
+            $_items = $_cart->getItems();
+            foreach ($_items as $_item_id => $_item) {
+                $_product = $_item->getProduct();
+                $_product->load($_product->getId());
+                if ($_product->isVirtual() && $_product_item->getId()!=$_product->getId()) {
+                    $_cart->removeItem($_item_id);
                 }
             }
         }
