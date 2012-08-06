@@ -31,6 +31,10 @@ class Uar_Custom_Helper_Data
                 $_special_shipp = true;
                 continue;
             }
+
+            if ($_special_shipp && $_with_special) {
+                break;
+            }
         }
 
         switch (true) {
