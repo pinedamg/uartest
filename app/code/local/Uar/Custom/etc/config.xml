@@ -23,7 +23,16 @@
                         <method>isSpecialShipping</method>
                     </uar_custom_observer>
                 </observers>
-            </checkout_cart_save_after>      
+            </checkout_cart_save_after>
+            <checkout_cart_save_before>
+                <observers>
+                    <uar_custom_observer_remove_shipping>
+                        <type>singleton</type>
+                        <class>Uar_Custom_Model_Observer</class>
+                        <method>removeSpecialShipping</method>
+                    </uar_custom_observer_remove_shipping>
+                </observers>
+            </checkout_cart_save_before>
         </events>
         <blocks>
             <custom>
