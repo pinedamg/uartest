@@ -87,9 +87,6 @@
                     var response = transport.responseText.evalJSON();
                     parent.window.location.reload();
                 }
-            },
-            onComplete: function () {
-                Element.hide('loading-mask');
             }
         });
     }
