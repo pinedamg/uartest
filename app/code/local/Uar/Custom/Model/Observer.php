@@ -83,6 +83,8 @@ class Uar_Custom_Model_Observer
                 $_product->load($_product->getId());
                 if ($_product->isVirtual() && $_product_item->getId()!=$_product->getId()) {
                     $_cart->removeItem($_item_id);
+                }else if($_product->isVirtual() && $_product_item->getId()==$_product->getId()){
+                    $_cart->updateItem($_item_id,array('qty'=>1));
                 }
             }
         }

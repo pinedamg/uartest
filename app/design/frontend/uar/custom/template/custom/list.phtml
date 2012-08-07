@@ -1,3 +1,31 @@
+<style type="text/css">
+    #loading-mask {
+    background:background:url(../images/blank.gif) repeat;
+    position:absolute;
+    color:#d85909;
+    font-size:1.1em;
+    font-weight:bold;
+    text-align:center;
+    opacity:0.80;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE8 */
+    z-index:500;
+    }
+#loading-mask .loader {
+    position:fixed;
+    top:45%;
+    left:50%;
+    width:120px;
+    margin-left:-60px;
+    padding:15px 60px;
+    background:#fff4e9;
+    border:2px solid #f1af73;
+    color:#d85909;
+    font-weight:bold;
+    text-align:center;
+    z-index:1000;
+    }
+
+</style>
 <div class="page-title title-buttons">
     <h1><?php echo $this->__('Special Shipping Products List') ?></h1>
 </div>
@@ -43,28 +71,25 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<div id="loading-mask" style="display:none">
+    <p class="loader" id="loading_mask_loader"><img src="<?php echo $this->getSkinUrl('images/ajax-loader-tr.gif',array('_area'=>'adminhtml','_package'=>'default','_theme'=>'default')) ?>" alt="<?php echo Mage::helper('custom')->__('Loading...') ?>"/><br/><?php echo Mage::helper('custom')->__('Please wait...') ?></p>
+</div>
 <script type="text/javascript">
     function selectSpecialShipping(productId)
     {
         new Ajax.Request('<?php echo Mage::getUrl('custom/custom/select') ?>', {
             parameters: {isAjax: 1, method: 'POST', product_id: productId},
             onLoading: function(){
-//                alert('loading');
+                Element.show('loading-mask');
             },
             onSuccess: function(transport) {
-//                alert('success');
                 if (transport.responseText.isJSON()) {
                     var response = transport.responseText.evalJSON();
-//                    alert(response.response);
-//                    parent.special_shipping_popup.refresh();
                     parent.window.location.reload();
                 }
             },
             onComplete: function () {
-//                alert('complete');
-            },
-            onFailure: function(error) {
-//                alert('error');
+                Element.hide('loading-mask');
             }
         });
     }
